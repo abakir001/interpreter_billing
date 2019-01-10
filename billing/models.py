@@ -14,7 +14,7 @@ class User(AbstractBaseUser):
 class Deposit(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     amount = models.DecimalField(verbose_name='Anount deposited', max_digits=10, decimal_places=2)
-    seconds = models.IntegerField(verbose_name='Seconds deposited')
+    seconds = models.IntegerField(verbose_name='Seconds deposited', blank=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,

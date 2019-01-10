@@ -22,7 +22,17 @@ class Deposit(models.Model):
     )
 
     def __str__(self):
-        return '{} deposit. Amount: {}'.format(self.user, self.amount)
+        return '{} deposit. Amount: {}, Seconds: {}'.format(
+            self.user, self.amount, self.seconds)
+    
+    def save(self, *args, **kwargs):
+        # self.amount is entered in Soms.
+        # Currency is converted to USD ($1 == 70 Soms) and multiplied by 60
+        # This is how we calculate seconds
+        CURRENCY_RATE = 70
+        SECONDS_IN_MINUTE = 60
+        self.seconds = self.amount * SECONDS_IN_MINUTE / CURRENCY_RATE
+        super().save(*args, **kwargs)
 
 
 class Call(models.Model):

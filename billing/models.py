@@ -1,14 +1,15 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import AbstractBaseUser
+from django.utils.translation import ugettext_lazy as _
+
+from billing.user_model import AbstractNamedUser
 
 
-class User(AbstractBaseUser):
-    name = models.CharField(verbose_name='name', max_length=255, blank=True, null=True)
-    phone = models.CharField(max_length=255, unique=True)
-
-    USERNAME_FIELD = 'phone'
-    REQUIRED_FIELDS = ['phone']
+class User(AbstractNamedUser):
+    class Meta(AbstractNamedUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
 
 
 class Deposit(models.Model):

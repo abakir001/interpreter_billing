@@ -22,9 +22,9 @@ source env/bin/activate
 pip install --upgrade pip
 ```
 
-7. ... and install Django
+7. ... and install Django and other dependencies
 ```shell
-pip install django
+pip install -r requirements.txt
 ```
 
 8. ... and create migrations

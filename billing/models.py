@@ -2,15 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from billing.user_model import AbstractNamedUser
-
-
-class User(AbstractNamedUser):
-    class Meta(AbstractNamedUser.Meta):
-        swappable = 'AUTH_USER_MODEL'
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
-
 
 class Deposit(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

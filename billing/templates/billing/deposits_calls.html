@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} Deposits, Users and Calls {% endblock %}
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+
+<div class = "row">
+<div class = "col-md-4" ><h2><p>Balance</p></h2>
+{% for key, value in bal_dict.items %}
+    {% if value < 0 %}
+    <div class="alert alert-danger" role="alert">{{key}} is out of balance</div>
+{% endif %}
+   <div>{{key}}: {{value}}</div>
+
+{% endfor %}</div>
+
+<div class = "col-md-4"><h2>Calls</h2>
+{% for key, value in sum_duration_dict.items %}
+   <div>{{key}}: {{value}} </div>
+   <a href='/add_call/{{key.pk}}/' class="btn btn-outline-primary" role="button">Add Call for {{key}}</a>
+{% endfor %}</div>
+
+<div class = "col-md-4"><h2>Deposits</h2>
+ {% for key, value in sum_deposits_dict.items %}
+   <div>{{key}}: {{value}} </div><a href='/add_call/{{key.pk}}/' class="btn btn-outline-success" role="button">Add Deposit for {{key}}</a>
+    {% endfor %}</div>
+</div>
+</div>
+
+<div class="container-fluid">
+<div class = "row">
+<div class = "col-md-6"><h2>Calls Detailed</h2>
+{% for key, value in calls_dict.items %}
+{% if forloop.counter|divisibleby:'2' %}
+<p class="text-success"> {{key}}: {{value}} </p><br>
+{% else %}
+{{key}}: {{value}}
+{% endif %}
+{% endfor %}
+
+
+
+</div>
+
+<div class = "col-md-6"><h2>Deposits Detailed</h2>
+{% for key, value in deposits_dict.items %}
+    {{key}}:
+    {% for deposit in value %}
+        <div>{{deposit}}</div>
+    {% endfor %}
+{% endfor %}
+</div></div>
+    {% endblock %}

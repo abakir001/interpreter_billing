@@ -1,7 +1,10 @@
 from django.contrib import admin
 from billing.forms import DepositForm
+
 from billing.models import Deposit
 from billing.models import Call
+
+
 
 
 class DepositAdmin(admin.ModelAdmin):
@@ -9,3 +12,6 @@ class DepositAdmin(admin.ModelAdmin):
 
 admin.site.register(Deposit, DepositAdmin)
 admin.site.register(Call)
+#admin.site.register(User)
+
+

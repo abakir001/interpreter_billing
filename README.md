@@ -3,7 +3,7 @@
 1. Go to a folder where you normally store your projects
 2. Clone the project:
 ```shell
-git clone https://github.com/jumasheff/interpreter_billing.git
+git clone https://github.com/abakir001/interpreter_billing.git
 ```
 3. After cloning, you will see a folder named `interpreter_billing`. `cd` there
 

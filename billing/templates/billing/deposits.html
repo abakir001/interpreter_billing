@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Deposits{% endblock %}
+
+{% block main %}
+
+{% for deposit in deposits %}
+<p>{{deposit}}</p>
+    {% endfor %}
+
+{% endblock %}

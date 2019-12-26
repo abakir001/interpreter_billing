@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Add Call{% endblock %}
+
+{% block main %}
+
+    <p>Add Call</p>
+
+<form action="/add_call_form/{{pk}}/" method="POST">
+    {% csrf_token %}
+    <input type="number" name="duration" >
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

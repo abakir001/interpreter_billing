@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Add Deposit{% endblock %}
+
+{% block main %}
+
+    <p>Add Deposit</p>
+
+<form action="/add_deposit_form/{{pk}}/" method="POST">
+    {% csrf_token %}
+    <input type="number" name="seconds" >
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

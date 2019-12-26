@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} Deposits, Users and Calls {% endblock %}
+{% block main %}
+
+<!--  {% for call in calls %} -->
+     <!--  <p>{{call}}</p>
+
+         {% endfor %} -->
+
+    <h2>Balance</h2>
+{% for key, value in bal_dict.items %}
+   <div>{{key}}: {{value}}</div>
+{% endfor %}
+
+<h2>Calls</h2>
+ {% for key, value in sum_duration_dict.items %}
+   <div>{{key}}: {{value}}</div>
+{% endfor %}
+<h2>Calls Detailed</h2>
+{% for key, value in calls_dict.items %}
+    {{key}}:
+    {% for call in value %}
+        <div>{{call}}</div>
+    {% endfor %}
+{% endfor %}
+
+<h2>Deposits</h2>
+ {% for key, value in sum_deposits_dict.items %}
+   <div>{{key}}: {{value}}</div>
+    {% endfor %}
+
+<h2>Deposits Detailed</h2>
+{% for key, value in deposits_dict.items %}
+    <div>{{key}}:</div>
+    {% for deposit in value %}
+        <div>{{ deposit }}</div>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}
